@@ -1,3 +1,6 @@
+# SEMANA 1
+
+
 # Ejercicio 1.1: Instalación y configuración de sistemas operativos
 
 Se trara del Ejercicio 1.1 del plan de formación dual con el que se pretence acercar al alumno al uso de los comando de shell de linux.
@@ -313,3 +316,85 @@ Con este JOIN conseguimos mostrar los clientes que han comprado, el producto que
 
 
 Con esto mostramos el id de la venta y el nombre del producto.
+
+
+---
+
+
+# SEMANA 2
+
+
+## Ejercico 2.1: Modelado realcional.
+
+
+Se trata del ejercico 2.1, donde se nos da un enunciado para abordar tanto este ejercico como el siguiente. Éste es:
+
+
+*Enunciado: Una biblioteca necesita gestionar libros, autores y préstamos. Los libros tienen título, ISBN y categoría. Los autores tienen nombre y nacionalidad. Un libro puede tener varios autores. Los préstamos registran qué libro se presta a qué usuario y en qué fecha*
+
+
+Donde las tareas completadas son:
+
+
+- Crear diagrama de Entidad - Relación.
+
+
+- Crear tablas resultantes normalizadas.
+
+
+# 1- Creación del diagrama ER.
+
+
+En función de los datos dados por el enunciado se ha realizado el diagrama ER de la misma forma que lo hemos ido haciendo en el periodo de clases. 
+
+![Diagrama ER](/Ejercicio2.1/imagenes/imagen1.png)
+
+
+En este diagrama podemos ver las siguientes entidades y relaciones:
+
+
+Entidades:
+
+- **Autores** ( IdAutor(PK), Nombre_Autor, Nacionalidad )
+
+
+- **Libros** ( ISABN(PK), Título, Categoría )
+
+
+- **Préstamo** ( IdPréstamo(PK), Fecha_Inc, Fecha_Fin  )
+
+
+- **Usuarios** ( IdUsuario(PK), Nombre_Usuario, Teléfono )
+
+
+Entre los paréntesis indicamos los atributos de estas entidades.
+
+
+Relacions:
+
+- **Escribe**
+
+
+- **Contiene**
+
+
+- **Realiza**
+
+
+Debido a que **préstamo** es una *entidad débil* de existencia, porque un préstamo no existe sin libro ni sin los usuarios, hace que las relaciones en las que interviene esta entidad, sean también "débiles".
+
+
+De este diagrama entendemos que un **libro** puede estar escrito por varios **autores**, a la vez que un **autor** puede escribir varios **libros**. También, un **libro** puede estar en un **préstamo** o no, pero en el caso de que esté, solo puede prestarse una vez de golpe; mientras que un **préstamo** puede ser de varios libros diferentes. Con respecto al **usuario**, este puede realizar varios **prestamos** en el tiempo (uno hoy, otro mañana, otro pasado, etc.) y un **préstamo** solo puede ser hecho por **usuario** a la vez. (P.e. un usuario hace un prestamo de varios libros y otro de uno solo, ambos estan haciendo un único prestamo de diferentes cantidades de libros.)
+
+
+# 2- Creación de las tablas normalizadas.
+
+Tras normalizar hasta la 3º forma normal, obtenemos las siguientes tablas con sus diferentes atributos:
+
+
+![Tablas normalizadas](/Ejercicio2.1/imagenes/imagen2.png)
+
+
+Se ha creado la tabla Libros_Autores para resolver la relación "**N:M**" entre ambas tablas
+
+En la siguiente actividad veremos como quedan estas tablas ya implementadas en la base de datos con la que trabajaremos.
