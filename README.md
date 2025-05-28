@@ -342,7 +342,7 @@ Donde las tareas completadas son:
 - Crear tablas resultantes normalizadas.
 
 
-# 1- Creación del diagrama ER.
+## 1- Creación del diagrama ER.
 
 
 En función de los datos dados por el enunciado se ha realizado el diagrama ER de la misma forma que lo hemos ido haciendo en el periodo de clases. 
@@ -387,7 +387,7 @@ Debido a que **préstamo** es una *entidad débil* de existencia, porque un pré
 De este diagrama entendemos que un **libro** puede estar escrito por varios **autores**, a la vez que un **autor** puede escribir varios **libros**. También, un **libro** puede estar en un **préstamo** o no, pero en el caso de que esté, solo puede prestarse una vez de golpe; mientras que un **préstamo** puede ser de varios libros diferentes. Con respecto al **usuario**, este puede realizar varios **prestamos** en el tiempo (uno hoy, otro mañana, otro pasado, etc.) y un **préstamo** solo puede ser hecho por **usuario** a la vez. (P.e. un usuario hace un prestamo de varios libros y otro de uno solo, ambos estan haciendo un único prestamo de diferentes cantidades de libros.)
 
 
-# 2- Creación de las tablas normalizadas.
+## 2- Creación de las tablas normalizadas.
 
 Tras normalizar hasta la 3º forma normal, obtenemos las siguientes tablas con sus diferentes atributos:
 
@@ -398,3 +398,104 @@ Tras normalizar hasta la 3º forma normal, obtenemos las siguientes tablas con s
 Se ha creado la tabla Libros_Autores para resolver la relación "**N:M**" entre ambas tablas
 
 En la siguiente actividad veremos como quedan estas tablas ya implementadas en la base de datos con la que trabajaremos.
+
+
+# Ejercicio 2.2: Creación de base de datos.
+
+
+Se trata del ejercicio 2.2 donde vamos a crear la base de datos en función de lod datos del ejercicio 2.1 y su enunciado. 
+Como en ejercicos anteriores, vamos a utiliar la herramienta MySQLWorckbench para crear y trabajar con la base de datos.
+
+
+Para esta tarea se han completado las siguientes partes:
+
+
+- Crear las tablas y relaciones.
+
+
+- Insertar 5 libros, 3 autores y 4 préstamos.
+
+
+- Probar consultas con JOIN, ORDER BY y filtros.
+
+
+## 1- Creación de tablas.
+
+
+Procedemos a crear la base de datos de la misma manera que lo hicimos en el ejercicio 1.4 (con el comando CREATE DATABASE + nombre) y continuamos creando y añadiendo las tablas de las diferentes entidades y relaciones.
+
+![SQL creación tablas1](/Ejercicio2.2/imagenes/imagen1.png)
+![SQL creación tabals2](/Ejercicio2.2/imagenes/imagen2.png)
+
+
+Se ha decicido poner el atributo "Telefono" como VARCHAR para habilitar la posibilidad de que a la hora de ingresar los números, estos puedan estar separados por "-" o por un espacio.
+
+
+Otras decisiones que se han tomado para hacer más real la creación de las tablas han sido el hacer que los "**Id**" dean incrementados automáticamente, se ha impedido la posibilidad de borrar un **libro** de la base de datos siempre y cuando éste esté en añadido también en **prestamos** (*DELETE RESTRICT*); también, se ha añadido la opcion de que si el **ISBN** o el **IdAutor** son modificados en la tabla de origen, estos datos se actualicen también en el resto de tablas que aparezcan (*UPDATE CASCADE*).
+
+
+## 2- Inserción de datos.
+
+
+Comnezamos a insertar datos dentro de sus respectivas tablas:
+
+![Autores y libros](/Ejercicio2.2/imagenes/imagen3.png)
+
+
+Con el comando **INSERT INTO + nombreTabla** insertamso los datos, primero lanzamos los autores y los libros para que se genere el Id correspondiente. 
+
+
+![Tabla relación](/Ejercicio2.2/imagenes/imagen5.png)
+
+
+Aquí emparejamos los libros con los autores, por lo que el Id debía de estar creado de antes, como lo pusimos de autoincremento debíamos lanzar primero los comandos anteriores en lugar de a la vez con este último.
+
+
+![Datos users](/Ejercicio2.2/imagenes/imagen4.png)
+
+
+Ahora, insertamos los datos de los usuarios, como no especificaba cuantos, me he tomado la libertad de poner uno más que los préstamos a realizar.
+
+
+![Préstamos registrados](/Ejercicio2.2/imagenes/imagen6.png)
+
+
+Lanzamos los comando y obtenemos lso préstamos realizados, indicando el ISBN, el IdUsuario y la fecha de inicio del préstamo.
+
+
+## 3- Pruebas de consultas JOIN, ORDER BY y FILTROS
+
+
+Procedemos a realizar una serie de consultas:
+
+
+![JOIN y ORDER BY 1](/Ejercicio2.2/imagenes/imagen7.png)
+
+
+Con esta consulta obtenemos la lista completa de todos los libros que tenemos en la biblioteca, y para cada libro, mostramos quiénes son sus autores y cuál es su nacionalidad; ordenados por orden alfabético los títulos de estos.
+
+
+![JOIN y ORDER BY 2](/Ejercicio2.2/imagenes/imagen8.png)
+
+
+Con esta consulta obtenemos todos los registros de los prestamos de forma detallada, mostrando su Id, el título del libro, el ISBN de este, el usuario que ha realizado el prestamo junto con su nº de teléfono y la fecha en que lo realizó. Se ordena en función de la fecha con un orden descendente (el más nuevo arriba).
+
+
+---
+
+
+Vamos a continuar con algunas consultas sencillas que aporten de ejemplo para los filtros.
+
+![Filtros 1](/Ejercicio2.2/imagenes/imagen10.png)
+
+
+En este ejemplo combinamos el uso de **JOIN**, como de **ORDER BY** y también de los filtros con **WHERE**. 
+
+
+Filtramos los libros por el nombre del autor y mostramos todos aquellos que coincidan con que el nombre de este sea **'Tolkien'**.
+
+
+![Filtros 2](/Ejercicio2.2/imagenes/imagen9.png)
+
+
+Con esta consulta obtenemos una lista de todos los autores de los que tenemos registrados en al BBDD que tengan  nacionalidad 'Británica'
