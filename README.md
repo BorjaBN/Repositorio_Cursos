@@ -499,3 +499,114 @@ Filtramos los libros por el nombre del autor y mostramos todos aquellos que coin
 
 
 Con esta consulta obtenemos una lista de todos los autores de los que tenemos registrados en al BBDD que tengan  nacionalidad 'Británica'
+
+
+# Ejercicio 2.3: Aplicación de Java con conexión a Base de Datos
+
+
+Se trata del ejercicio 2.3 donde vamos a crear con la ayuda de *Intellij* una alicación que haga uso de la base de datos que hemos creado anteriormente (**Biblioteca**).
+
+
+Se han completado las siguientes tareas:
+
+
+- Usar JDBC para conectar con la BD.
+
+
+- Crear clases Libro, Usuario y Prestamo.
+
+
+- Validar entradas, capturar excepciones y mostrar mensajes de error claros.
+
+
+## 1- Uso de JDBC para conectar con la BBDD.
+
+
+Para el uso de JDBC es conveniente actualizar los drivers modificando el POM de nuestro proyecto, debido a que es un método más seguro en comparación con la descarga e instalación de algún tipo de archivo como un .jar.
+
+
+Por ello, debemos de buscar en la pagina web de **MAVEN Repository** un versión que nos convezca,. (Pagina web utilizada en el periodo ordinario de clases)
+
+Nosotros utilizaremos esta verisón:
+
+
+[MySQL conector/J](https://mvnrepository.com/artifact/com.mysql/mysql-connector-j/8.0.33)
+
+
+![Depencencias POM](/Ejercicio2.3/imagenes/imagen1.png)
+
+
+Dentro del archivo POM buscamos un apartado llamado **dependencies** y pegamos dentro de este el texto copiado del enlace anterior, de esta manera se nos crearán las dependencias necesarias para poder hacer uso de JDBC de una manera segura. 
+
+
+Ahora solo nos faltaría actualizar el archivo pulsando encima del boton con forma de *M* para ejecutar el POM.
+
+
+## 2- Creación de las clases a utilizar.
+
+
+Con el uso de *Intellij* se ha creado un nuevo proyecto dentro del repositorio del plan de formación, para de esta manera entregar una versión más limpia los trabajos solicitados. 
+
+
+![Libro1](/Ejercicio2.3/imagenes/imagen2.png)
+![Libro2](/Ejercicio2.3/imagenes/imagen3.png)
+![Libro3](/Ejercicio2.3/imagenes/imagen4.png)
+
+
+Esta sería el codigo de la clase Libro
+
+
+![User1](/Ejercicio2.3/imagenes/imagen5.png)
+![User2](/Ejercicio2.3/imagenes/imagen6.png)
+![User3](/Ejercicio2.3/imagenes/imagen7.png)
+
+
+El código de la clase Usuario
+
+
+![Prestamo1](/Ejercicio2.3/imagenes/imagen8.png)
+![Prestamo2](/Ejercicio2.3/imagenes/imagen9.png)
+![Prestamo3](/Ejercicio2.3/imagenes/imagen10.png)
+
+
+Este sería el código de la clase Prestamo
+
+
+## 3- Validación de entradas, captura de excepciones y mensajes de errores.
+
+
+Comenzamos lanzando la aplicación llamada **"AplicacionBiblioteca"**, cuando lo hagamos nos mostrará el menú con unas instrucciones sencillas, pero vamos a generarle algnuos fallos para esta prática.
+
+
+![Entrada no valida](/Ejercicio2.3/imagenes/imagen11.png)
+
+
+Al no introducir un número que la aplicación estaba esperando, nos muestra un mensaje de error.
+
+
+![ISBN vacío](/Ejercicio2.3/imagenes/imagen12.png)
+
+
+A la hora de registrar un nuevo préstamo, el programa no nos deja dejar en blanco los datos relevantes, nos mostrará un mensaje diciendo que no es posible esto.
+
+De la misma forma, si introducimos un dato que no sea correcto nos avisará también con un mensaje de ello.
+
+
+![Error de ISBN](/Ejercicio2.3/imagenes/imagen13.png)
+
+
+Una vez hayamos realizado todo con exito, nos mostrara un mensaje de que está todo correcto, como vemos aquí:
+
+
+![Exito en el préstamo](/Ejercicio2.3/imagenes/imagen14.png)
+
+
+
+![Ecepciones1](/Ejercicio2.3/imagenes/imagen15.png)
+![Ecepciones2](/Ejercicio2.3/imagenes/imagen16.png)
+
+
+Esta seria la captura de las excepciones que se ha utilizado.
+
+
+---
