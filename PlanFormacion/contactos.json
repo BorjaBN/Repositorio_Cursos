@@ -1,0 +1,19 @@
+[ {
+  "nombre" : "Ana",
+  "telefono" : "123456789",
+  "email" : "ana@mail.com",
+  "ciudad" : "Madrid",
+  "grupo" : "Amigos"
+}, {
+  "nombre" : "Pepe",
+  "telefono" : "111222333",
+  "email" : "pepe@mail.com",
+  "ciudad" : "Sevilla",
+  "grupo" : "Amigos"
+}, {
+  "nombre" : "Ana",
+  "telefono" : "123456789",
+  "email" : "ana@mail.com",
+  "ciudad" : "Madrid",
+  "grupo" : "Trabajo"
+} ]
